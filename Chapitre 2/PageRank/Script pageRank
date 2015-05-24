@@ -1,0 +1,6 @@
+[r,G,B]=pagerank(1,8);//Récupération r
+
+clf;
+x=1:1:8
+disp(r)
+bar(x,r',0.1,'y')

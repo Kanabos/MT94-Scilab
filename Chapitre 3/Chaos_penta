@@ -1,0 +1,33 @@
+H=[ 2/(3+sqrt(5)) 0
+   0 2/(3+sqrt(5)) ];
+T2=[cosd(36)*((1+2*sind(18)));sind(36)*((1+2*sind(18)))];
+T3=[2*a*cosd(36);0];
+T4=[cosd(72)*((1+2*sind(18)));-sind(72)*((1+2*sind(18)))];
+T5=[cosd(72)*((1+2*sind(18)))+1;-sind(72)*((1+2*sind(18)))];
+cas=5
+
+n=600;
+x=zeros(2,n)
+x(:,1)=[0;0]
+clf;
+set(gca(),'isoview','on');
+for i=1:n
+    for j=1:n-1
+        ran=floor(1+ cas*rand(1 ,1));
+        select ran
+            case 1 then
+                x(:,j+1)=H*x(:,j)
+            case 2 then
+                x(:,j+1)=H*x(:,j)+T2;
+            case 3 then
+                x(:,j+1)=H*x(:,j)+T3;
+            case 4 then
+                x(:,j+1)=H*x(:,j)+T4;
+            case 5 then
+                x(:,j+1)=H*x(:,j)+T5;
+        end
+    end
+    X=x(1,:);
+    Y=x(2,:);
+    plot(X,Y,'.','markersize',1);
+end
